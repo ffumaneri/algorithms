@@ -1,6 +1,9 @@
 package algorithms.trie;
 
-public class Trie {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Trie implements Searcher{
     public TrieNode root;
     public Trie(){
         root = new TrieNode();
@@ -19,6 +22,27 @@ public class Trie {
         node.isWord = true;
     }
 
+    public void all(TrieNode node, List<String> foundWords, String prefix) {
+        if (node == null) {
+            return;
+        }
+        if (node.isWord){
+            foundWords.add(prefix);
+        }
+        for (int i=0; i < 26; i++) {
+            if (node.children[i] != null) {
+                all(node.children[i], foundWords, prefix + (char)(i + 'a'));
+            }
+        }
+    }
+    public List<String> allChildren(TrieNode node) {
+        List<String> result = new ArrayList<>();
+        all(node, result, "");
+        return result;
+    }
+
+
+    @Override
     public boolean search(String word) {
         TrieNode node = root;
 
