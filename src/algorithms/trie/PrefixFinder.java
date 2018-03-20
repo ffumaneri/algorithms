@@ -2,7 +2,6 @@ package algorithms.trie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PrefixFinder implements Finder{
 
@@ -27,12 +26,10 @@ public class PrefixFinder implements Finder{
     @Override
     public List<String> find(String value) {
         TrieNode node = findPrefixNode(trie.root, value);
-        if (node == null) {
-            return new ArrayList<>();
-        } else {
-            List<String> result = new ArrayList<>();
+        List<String> result = new ArrayList<>();
+        if (node != null) {
             trie.all(node, result, value);
-            return result;
         }
+        return result;
     }
 }

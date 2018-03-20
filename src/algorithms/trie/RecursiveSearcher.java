@@ -18,7 +18,7 @@ public class RecursiveSearcher implements Searcher {
         } else {
             int charIndex = word.charAt(index) - 'a';
             if (node.children[charIndex] != null){
-                return search(word, node.children[charIndex], ++index);
+                return search(word, node.children[charIndex], index + 1);
             } else {
                 return false;
             }
