@@ -3,7 +3,7 @@ package algorithms.trie;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Trie implements Searcher{
+public class Trie {
     public TrieNode root;
     public Trie(){
         root = new TrieNode();
@@ -39,23 +39,6 @@ public class Trie implements Searcher{
         List<String> result = new ArrayList<>();
         all(node, result, "");
         return result;
-    }
-
-
-    @Override
-    public boolean search(String word) {
-        TrieNode node = root;
-
-        for (int i=0; i < word.length(); i++){
-            int charIndex = word.charAt(i) - 'a';
-            if (node.children[charIndex] != null){
-                node = node.children[charIndex];
-            } else {
-                return false;
-            }
-        }
-
-        return node.isWord;
     }
 
 }

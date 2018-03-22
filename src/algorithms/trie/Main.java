@@ -13,16 +13,17 @@ public class Main {
         System.out.println("All words:");
         trie.allChildren(trie.root).stream().forEach(s -> System.out.println(s));
 
-        System.out.println("Find prefix bed");
+        System.out.println("Find prefix bed:");
         PrefixFinder pf = new PrefixFinder(trie);
         pf.find("bed").stream().forEach(s -> System.out.println(s));
 
-        System.out.println("Search house: " + trie.search("house"));
-        System.out.println("Search dog: " + trie.search("dog"));
+        BasicSearcher bs = new BasicSearcher(trie);
+        System.out.println("Search house: " + bs.search("house"));
+        System.out.println("Search dog: " + bs.search("dog"));
 
 
-        RecursiveSearcher wsearcher = new RecursiveSearcher(trie);
-        System.out.println("Search house: " + wsearcher.search("house"));
-        System.out.println("Search dog: " + wsearcher.search("dog"));
+        RecursiveSearcher ws = new RecursiveSearcher(trie);
+        System.out.println("Search house: " + ws.search("house"));
+        System.out.println("Search dog: " + ws.search("dog"));
     }
 }
